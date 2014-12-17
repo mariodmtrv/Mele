@@ -1,0 +1,52 @@
+#fileExplorer {
+    width: 20%;
+    margin-left: 2%;
+    margin-right: auto;
+    float: left;
+}
+
+#mainWindow {
+    margin-right: 2%;
+    margin-left: auto;
+    float: right;
+    position: relative;
+    height: 50%;
+    min-height: 400px;
+    width: 75%;
+}
+
+.expressionContent {
+    font-size: medium;
+}
+
+#results {
+    min-height: 400px;
+    margin-bottom: 5px;
+}
+
+#resultArea {
+    min-width: 600px;
+    width: 100%;
+    padding-left: 3em;
+    padding-bottom: 3em;
+    padding-right: 1em;
+    pading-top: 1em;
+}
+
+#input {
+    position: absolute;
+    margin-bottom: 10px;
+    min-width: 75%;
+}
+
+#expressionInput {
+    float: left;
+    width: 85%;
+}
+
+#functionsButton {
+    float: right;
+    margin-left: 10px;
+    width: 7%;
+}
+
