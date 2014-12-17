@@ -410,7 +410,7 @@
                 ( text + "" ).replace(rtrim, "");
         },
 
-        // results is for internal usage only
+        // querying is for internal usage only
         makeArray: function (arr, results) {
             var ret = results || [];
 
@@ -2147,10 +2147,10 @@
                                     if ((oldCache = outerCache[dir]) &&
                                         oldCache[0] === dirruns && oldCache[1] === doneName) {
 
-                                        // Assign to newCache so results back-propagate to previous elements
+                                        // Assign to newCache so querying back-propagate to previous elements
                                         return (newCache[2] = oldCache[2]);
                                     } else {
-                                        // Reuse newcache so results back-propagate to previous elements
+                                        // Reuse newcache so querying back-propagate to previous elements
                                         outerCache[dir] = newCache;
 
                                         // A match means we're done; a fail means we have to keep checking
@@ -2224,19 +2224,19 @@
                     // Get initial elements from seed or context
                         elems = seed || multipleContexts(selector || "*", context.nodeType ? [context] : context, []),
 
-                    // Prefilter to get matcher input, preserving a map for seed-results synchronization
+                    // Prefilter to get matcher input, preserving a map for seed-querying synchronization
                         matcherIn = preFilter && ( seed || !selector ) ?
                             condense(elems, preMap, preFilter, context, xml) :
                             elems,
 
                         matcherOut = matcher ?
-                            // If we have a postFinder, or filtered seed, or non-seed postFilter or preexisting results,
+                            // If we have a postFinder, or filtered seed, or non-seed postFilter or preexisting querying,
                             postFinder || ( seed ? preFilter : preexisting || postFilter ) ?
 
                                 // ...intermediate processing is necessary
                                 [] :
 
-                                // ...otherwise use results directly
+                                // ...otherwise use querying directly
                                 results :
                             matcherIn;
 
@@ -2274,7 +2274,7 @@
                                 postFinder(null, (matcherOut = []), temp, xml);
                             }
 
-                            // Move matched elements from seed to results to keep them synchronized
+                            // Move matched elements from seed to querying to keep them synchronized
                             i = matcherOut.length;
                             while (i--) {
                                 if ((elem = matcherOut[i]) &&
@@ -2285,7 +2285,7 @@
                             }
                         }
 
-                        // Add elements to results, through postFinder if defined
+                        // Add elements to querying, through postFinder if defined
                     } else {
                         matcherOut = condense(
                             matcherOut === results ?
@@ -2376,7 +2376,7 @@
                             outermostContext = context !== document && context;
                         }
 
-                        // Add elements passing elementMatchers directly to results
+                        // Add elements passing elementMatchers directly to querying
                         // Keep `i` a string if there are no elements so `matchedCount` will be "00" below
                         // Support: IE<9, Safari
                         // Tolerate NodeList properties (IE: "length"; Safari: <number>) matching elements by id
@@ -2430,7 +2430,7 @@
                                 setMatched = condense(setMatched);
                             }
 
-                            // Add matches to results
+                            // Add matches to querying
                             push.apply(results, setMatched);
 
                             // Seedless set matches succeeding multiple successful matchers stipulate sorting
@@ -4273,7 +4273,7 @@
     }
 
     /*
-     * Helper functions for managing events -- not part of the public interface.
+     * Helper functions for managing events -- not part of the public component.
      * Props to Dean Edwards' addEvent library for many of the ideas.
      */
     jQuery.event = {
@@ -10196,7 +10196,7 @@
                     var doc;
 
                     if (jQuery.isWindow(elem)) {
-                        // As of 5/8/2012 this will yield incorrect results for Mobile Safari, but there
+                        // As of 5/8/2012 this will yield incorrect querying for Mobile Safari, but there
                         // isn't a whole lot we can do. See pull request at this URL for discussion:
                         // https://github.com/jquery/jquery/pull/764
                         return elem.document.documentElement["client" + name];
