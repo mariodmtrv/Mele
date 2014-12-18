@@ -1,6 +1,32 @@
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> are supported
- <ol>
-<li>  - [ ] list syntax is required (any unordered or ordered list supported)</li>
-</ol>
-- [x] this is a complete item
-- [ ] this is an incomplete item
+- [ ] Syntax management
+  - [ ] Lexer
+  - [ ] Parser
+      - [ ] Syntax Verification
+      - [ ] Tree Construction
+      - [ ] Property Extraction
+  - [ ] Functions
+    - [ ] By Property
+      - [ ] Aggregate
+        - [ ] Min, Max, Median, Sum
+      - [ ] Quartiles
+    - [ ] Machine learning stuff
+      - [ ] Kmeans
+      - [ ] ...
+      - [ ] ...
+  - [ ] File Management
+    - [ ] Uploading CSV
+    - [ ] Sensors adding entries
+    
+  - [ ] Session management
+    - [ ] Storing variables
+
+- [ ] Frontend
+  - [x] Initial text input and output
+  - [x] File Tree visualisation
+  - [ ] Documentation
+    - [ ] About tab
+    - [ ] Functions guide
+  - [ ] Autocomplete
+  - [ ] Chart visualisation http://d3js.org
+  - [ ] File tree management
+
