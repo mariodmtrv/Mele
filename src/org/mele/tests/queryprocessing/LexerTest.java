@@ -25,16 +25,24 @@ public class LexerTest {
     public void testLongerInput() {
         String query = "alpha=180+    sin  (   beta  /  (   2*(  180 \n - alpha ))  )";
         List<Token> tokens = Lexer.tokenize(query);
-        assertEquals(tokens.size(), 17);
+        assertEquals(tokens.size(), 18);
     }
 
     @Test
     public void testEmpty() {
-        //TODO Fix this bug
-        String query = "x-y";
+
+        String query = "";
         List<Token> tokens = Lexer.tokenize(query);
-        assertEquals(tokens.size(), 2);
-        //assertEquals(tokens.size(), 3);
+
+        assertEquals(tokens.size(), 0);
+    }
+
+    @Test
+    public void testSign() {
+        String query = "x-=y";
+        List<Token> tokens = Lexer.tokenize(query);
+
+        assertEquals(tokens.size(), 4);
     }
 
     @Test
