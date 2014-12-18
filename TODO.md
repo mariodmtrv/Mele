@@ -1,0 +1,32 @@
+- [ ] Syntax management
+  - [ ] Lexer
+  - [ ] Parser
+      - [ ] Syntax Verification
+      - [ ] Tree Construction
+      - [ ] Property Extraction
+  - [ ] Functions
+    - [ ] By Property
+      - [ ] Aggregate
+        - [ ] Min, Max, Median, Sum
+      - [ ] Quartiles
+    - [ ] Machine learning stuff
+      - [ ] Kmeans
+      - [ ] ...
+      - [ ] ...
+  - [ ] File Management
+    - [ ] Uploading CSV
+    - [ ] Sensors adding entries
+    
+  - [ ] Session management
+    - [ ] Storing variables
+
+- [ ] Frontend
+  - [x] Initial text input and output
+  - [x] File Tree visualisation
+  - [ ] Documentation
+    - [ ] About tab
+    - [ ] Functions guide
+  - [ ] Autocomplete
+  - [ ] Chart visualisation http://d3js.org
+  - [ ] File tree management
+
