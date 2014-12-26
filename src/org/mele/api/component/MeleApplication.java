@@ -1,9 +1,7 @@
 package org.mele.api.component;
 
+
 import org.mele.api.RequestController;
-import org.mele.api.querying.ResponseStatus;
-import org.mele.api.querying.TextQueryResult;
-import org.mele.api.querying.UserQuery;
 
 import java.util.HashSet;
 import java.util.Set;

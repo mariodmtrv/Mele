@@ -98,13 +98,7 @@ File system manegement
         <article id="results">
             <textarea readonly id="resultArea" type="text" class="expressionContent" placeholder="Results"
                       class="span6" rows="15">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit anim id est laborum
+
             </textarea>
 
         </article>
@@ -123,17 +117,16 @@ File system manegement
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    Mean
-                                </li>
-                                <li>Median</li>
+                            <ul class="dropdown-menu" role="menu" id="functionsMenu">
+
                             </ul>
 
                         </div>
                     </li>
                     <li>
-                        <button id="executeButton" type="button" class="btn btn-default">Execute</button>
+                        <button id="executeButton" type="button" class="btn btn-default" onclick="submitInputQuery()">
+                            Execute
+                        </button>
                     </li>
 
                 </ul>
@@ -143,6 +136,8 @@ File system manegement
 </section>
 <script type="text/javascript">
     $(document).ready(function () {
+        createHelpButtons();
+
         var data = [{
             id: 'dir-1',
             typeName: 'Root',

@@ -3,23 +3,31 @@ package org.mele.api;
 import org.mele.api.querying.TextQueryResult;
 import org.mele.api.querying.UserQuery;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 
 /**
  * Created by mariodimitrov on 12/17/14.
  */
 @Path("query")
 public class RequestController {
-    @Path("text")
     @POST
+    @Path("text")
     @Consumes("application/json")
-    @Produces("application/json")
-    public TextQueryResult processTextQuery(UserQuery query) {
-        return null;
+    @Produces("text/plain")
+    public String processQuery(UserQuery query) {
+        System.out.println(query.getQueryText());
+        return query.getQueryText().toUpperCase();
     }
+  /* public TextQueryResult processTextQuery(UserQuery query) {
+        return null;
+    }*/
 
     /*TODO Add file input handling*/
+
+    @GET
+    @Path("test")
+    @Produces("text/plain")
+    public String testApi() {
+        return "Hello, Mele";
+    }
 }

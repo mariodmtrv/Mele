@@ -2,9 +2,9 @@
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
     <application>mele</application>
     <version>1</version>
-    <threadsafe>true</threadsafe>
+    <threadsafe>false</threadsafe>
     <system-properties>
-        <property typeName="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+        <property value="WEB-INF/logging.properties" name="logging" typeName="java.util.logging.config.file"/>
     </system-properties>
     <!-- Configure serving/caching of GWT files -->
     <static-files>
