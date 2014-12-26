@@ -12,6 +12,11 @@ import java.util.Properties;
 public class DBConnection {
     private static Connection connection;
 
+
+    private DBConnection() {
+        // can only get the connection
+    }
+
     public static Connection getConnection() {
         if (connection == null) {
             connection = createConnection();
@@ -19,8 +24,8 @@ public class DBConnection {
         return connection;
     }
 
-    private DBConnection() {
-        // can only get the connection
+    public static void destroy() {
+        connection = null;
     }
 
     private static Connection createConnection() {

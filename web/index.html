@@ -11,6 +11,7 @@
     <script src="www/js/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <script src="www/js/file-tree.min.js"></script>
+    <script src="www/js/basic-io.js"></script>
 </head>
 <body>
 <header>
@@ -144,22 +145,22 @@ File system manegement
     $(document).ready(function () {
         var data = [{
             id: 'dir-1',
-            name: 'Root',
+            typeName: 'Root',
             type: 'dir',
             children: [
                 {
                     id: 'dir-2',
-                    name: 'Sub_dir',
+                    typeName: 'Sub_dir',
                     type: 'dir',
                     children: [{
                         id: 'file-1',
-                        name: 'file-tree-master.zip',
+                        typeName: 'file-tree-master.zip',
                         type: 'zip',
                         url: '1.zip'
                     }]
                 }, {
                     id: 'file-2',
-                    name: 'File tree',
+                    typeName: 'File tree',
                     type: 'zip',
                     url: '2.zip'
                 }
