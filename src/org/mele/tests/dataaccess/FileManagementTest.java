@@ -1,8 +1,7 @@
 package org.mele.tests.dataaccess;
 
-import junit.framework.Assert;
 import org.junit.Test;
-import org.mele.backend.dataaccess.files.CsvMultikeyResource;
+import org.mele.dal.CsvMultikeyResource;
 import org.mele.backend.dataaccess.files.MultikeyResource;
 
 import static junit.framework.Assert.assertEquals;

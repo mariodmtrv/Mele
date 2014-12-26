@@ -6,18 +6,24 @@ import org.mele.backend.exceptions.WrongTypeException;
  * Created by mariodimitrov on 12/26/14.
  */
 public enum DataType {
-    STRING("string"), DATETIME("datetime"), INTEGER("integer"), DOUBLE("double"), BOOLEAN("boolean");
+    STRING("string", "VARCHAR(50)"), DATETIME("datetime", "DATETIME"), INTEGER("integer", "INTEGER"), DOUBLE("double", "REAL"), BOOLEAN("boolean", "BYTEA");
     String typeName;
+    String storeDatatype;
 
-    DataType(String typeName) {
+    DataType(String typeName, String storeDatatype) {
         this.typeName = typeName;
+        this.storeDatatype = storeDatatype;
     }
 
-    String getTypeName() {
+    public String getStoreDatatype() {
+        return storeDatatype;
+    }
+
+    public String getTypeName() {
         return typeName;
     }
 
-    static DataType getDataType(String type) throws WrongTypeException {
+    public static DataType getDataType(String type) throws WrongTypeException {
         String typeClear = type.trim().toLowerCase();
         switch (typeClear) {
             case "string": {

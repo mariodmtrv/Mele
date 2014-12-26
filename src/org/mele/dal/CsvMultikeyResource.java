@@ -1,5 +1,7 @@
-package org.mele.backend.dataaccess.files;
+package org.mele.dal;
 
+import org.mele.backend.dataaccess.files.DataType;
+import org.mele.backend.dataaccess.files.MultikeyResource;
 import org.mele.backend.exceptions.WrongNumberOfArgumentsException;
 import org.mele.backend.exceptions.WrongTypeException;
 
