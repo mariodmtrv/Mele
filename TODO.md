@@ -14,11 +14,15 @@
       - [ ] ...
       - [ ] ...
   - [ ] File Management
+    - [ ] Managing File tree
+      - [ ] UserDirs
+      - [ ] UserFiles
     - [ ] Uploading CSV
     - [ ] Sensors adding entries
     
   - [ ] Session management
     - [ ] Storing variables
+    - [ ] Deleting unused variables
 
 - [ ] Frontend
   - [x] Initial text input and output
