@@ -12,6 +12,7 @@ public class MultikeyResource {
     List<Property> properties;
     List<String[]> values;
 
+
     public MultikeyResource() {
         this.properties = new ArrayList<Property>();
         this.values = new ArrayList<String[]>();
@@ -26,5 +27,21 @@ public class MultikeyResource {
             throw new WrongNumberOfArgumentsException();
         }
         values.add(value);
+    }
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
+    }
+
+    public List<String[]> getValues() {
+        return values;
+    }
+
+    public void setValues(List<String[]> values) {
+        this.values = values;
     }
 }

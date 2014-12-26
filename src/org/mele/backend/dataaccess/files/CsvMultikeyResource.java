@@ -26,7 +26,7 @@ public class CsvMultikeyResource {
 
     public void readFile() {
 
-        String csvFile = "/Users/mkyong/Downloads/GeoIPCountryWhois.csv";
+        String csvFile = "resources/test/wine.csv";
         BufferedReader br = null;
         String line = "", propertyNamesLine = "", propertyTypesLine = "";
         String cvsSplitBy = ",";
@@ -41,17 +41,20 @@ public class CsvMultikeyResource {
                 if (propertyTypesLine != null) {
                     String[] propertyNames = propertyNamesLine.split(cvsSplitBy);
                     String[] propertyTypes = propertyTypesLine.split(cvsSplitBy);
-
+                    createProperties(propertyNames, propertyTypes);
                     while ((line = br.readLine()) != null) {
 
                         // use comma as separator
                         String[] data = line.split(cvsSplitBy);
+                        this.resource.addEntry(data);
                     }
                 }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (WrongNumberOfArgumentsException e) {
             e.printStackTrace();
         } finally {
             if (br != null) {
@@ -62,8 +65,6 @@ public class CsvMultikeyResource {
                 }
             }
         }
-
-        System.out.println("Done");
     }
 
     private void createProperties(String[] propertyNames, String[] dataTypes) throws WrongNumberOfArgumentsException {

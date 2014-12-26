@@ -18,7 +18,8 @@ public enum DataType {
     }
 
     static DataType getDataType(String type) throws WrongTypeException {
-        switch (type.toLowerCase()) {
+        String typeClear = type.trim().toLowerCase();
+        switch (typeClear) {
             case "string": {
                 return DataType.STRING;
             }
