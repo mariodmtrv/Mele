@@ -6,7 +6,7 @@ import org.mele.backend.exceptions.WrongTypeException;
  * Created by mariodimitrov on 12/26/14.
  */
 public enum DataType {
-    STRING("string", "VARCHAR(50)"), DATETIME("datetime", "DATETIME"), INTEGER("integer", "INTEGER"), DOUBLE("double", "REAL"), BOOLEAN("boolean", "BYTEA");
+    STRING("string", "VARCHAR(50)"), DATETIME("datetime", "TIMESTAMP"), INTEGER("integer", "INTEGER"), DOUBLE("double", "REAL"), BOOLEAN("boolean", "BYTEA");
     String typeName;
     String storeDatatype;
 

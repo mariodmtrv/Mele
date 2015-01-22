@@ -3,7 +3,6 @@ package org.mele.backend.dataaccess;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
 import java.util.Properties;
 
 /**
@@ -34,7 +33,7 @@ public class DBConnection {
         } catch (java.lang.ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
-        Config config = new Config();
+        SourceConfig config = new SourceConfig();
         Properties properties = config.getProperties();
         String url = "jdbc:postgresql://" + properties.getProperty("databaseUrl") + File.separator + properties.getProperty("databaseName");
         Properties props = new Properties();

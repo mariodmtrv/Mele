@@ -1,9 +1,12 @@
 package org.mele.tests.dataaccess;
 
 import org.junit.Test;
+import org.mele.backend.dataaccess.files.Property;
 import org.mele.dal.CsvMultikeyResource;
 import org.mele.backend.dataaccess.files.MultikeyResource;
 import org.mele.dal.VariableAccess;
+
+import java.util.List;
 
 import static junit.framework.Assert.fail;
 
@@ -14,13 +17,21 @@ public class DataManagementTest {
     // @Test
     public void testCreateVariable() {
         CsvMultikeyResource fileResource = new CsvMultikeyResource();
-        fileResource.readFile();
+        fileResource.readFile("resources/test/wine.csv");
         MultikeyResource resource = fileResource.getResource();
+
         VariableAccess access = new VariableAccess();
-        access.createVariable("x", "sdfasdf34das", 1, resource.getProperties());
+        List<Property> properties = resource.getProperties();
+        String variableId = "sdfasdf34das";
+        access.createVariable("x", 1, resource.getProperties());
+        List<String[]> values = resource.getValues();
+        for (String[] value : values) {
+            access.addEntry(variableId, properties, value);
+        }
     }
 
-    @Test
+
+    //@Test
     public void testDeleteInactiveVariables() {
         VariableAccess access = new VariableAccess();
         access.destroyVariable("sdfasdf34das");

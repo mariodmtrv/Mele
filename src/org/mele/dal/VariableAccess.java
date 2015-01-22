@@ -1,13 +1,12 @@
 package org.mele.dal;
 
+import com.google.appengine.repackaged.com.google.api.client.util.DateTime;
 import org.mele.backend.dataaccess.DBConnection;
 import org.mele.backend.dataaccess.files.DataType;
+import org.mele.backend.dataaccess.files.MultikeyResource;
 import org.mele.backend.dataaccess.files.Property;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 
 /**
@@ -36,15 +35,24 @@ public class VariableAccess {
 
     }
 
-    public void createVariable(String variableName, String variableId, Integer ownerId, List<Property> properties) {
-        String createVariableStatement = "";
+    public void createVariable(String variableName, Integer ownerId, List<Property> properties) {
+        String createActiveVariableStatement = "INSERT INTO activevars(varname, lastused, ownerid) VALUES (?,?,?)";
         StringBuilder builder = new StringBuilder();
 
-
         try {
-            System.out.println(createVariableStatement);
-            PreparedStatement createPrepared = connection.prepareStatement(createVariableStatement);
-            builder.append("CREATE TABLE " + variableId + " (");
+            // register variable
+            PreparedStatement createActiveVarPrepared = connection.prepareStatement(createActiveVariableStatement);
+            createActiveVarPrepared.setString(1, "var" + variableName);
+
+            createActiveVarPrepared.setDate(2, new java.sql.Date(System.currentTimeMillis()));
+            createActiveVarPrepared.setInt(3, ownerId);
+            createActiveVarPrepared.execute();
+            //get registered id
+
+            int varId = getVariableId(variableName, ownerId);
+            //create variable
+
+            builder.append("CREATE TABLE var" + varId + " (");
 
 
             for (int ind = 0; ind < properties.size(); ind++) {
@@ -53,17 +61,18 @@ public class VariableAccess {
             }
             builder.deleteCharAt(builder.length() - 1);
             builder.append(")");
-            createVariableStatement = builder.toString();
-            createPrepared = connection.prepareStatement(createVariableStatement);
-            createPrepared.executeUpdate();
+            String createActiveVariableTable = builder.toString();
+            PreparedStatement createActiveVarTable = connection.prepareStatement(createActiveVariableTable);
+            createActiveVarTable.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
     public void addEntry(String variableId, List<Property> properties, String[] entry) {
-        StringBuilder insertQuery = new StringBuilder("INSERT INTO" + variableId + " VALUES ( ?");
+        StringBuilder insertQuery = new StringBuilder("INSERT INTO " + variableId + " VALUES ( ?");
 
         for (int ind = 1; ind < properties.size(); ind++) {
             insertQuery.append(", ?");
@@ -73,8 +82,10 @@ public class VariableAccess {
         try {
             statement = connection.prepareStatement(insertQuery.toString());
             for (int ind = 0; ind < properties.size(); ind++) {
-
+                addPropertyToStatement(statement, ind + 1, properties.get(ind), entry[ind]);
             }
+            statement.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -108,5 +119,22 @@ public class VariableAccess {
             }
         }
         // TODO Add other data types here
+    }
+
+    public int getVariableId(String variableName, Integer ownerId) {
+        PreparedStatement variableIdQuery = null;
+        Statement getStatement = null;
+        try {
+            variableIdQuery = connection.prepareStatement("SELECT varid FROM activevars WHERE varname=? AND ownerid=?");
+
+            variableIdQuery.setString(1, "var" + variableName);
+            variableIdQuery.setInt(2, ownerId);
+            ResultSet result = variableIdQuery.executeQuery();
+            result.next();
+            return result.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

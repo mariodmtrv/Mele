@@ -14,7 +14,7 @@ public class FileManagementTest {
     @Test
     public void testReadProperties() {
         CsvMultikeyResource csvresource = new CsvMultikeyResource();
-        csvresource.readFile();
+        csvresource.readFile("");
         MultikeyResource x = csvresource.getResource();
         assertEquals(x.getProperties().size(), 7);
         assertEquals(x.getValues().size(), 25);

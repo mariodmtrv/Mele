@@ -26,9 +26,8 @@ public class CsvMultikeyResource {
         return resource;
     }
 
-    public void readFile() {
+    public void readFile(String path) {
 
-        String csvFile = "resources/test/wine.csv";
         BufferedReader br = null;
         String line = "", propertyNamesLine = "", propertyTypesLine = "";
         String cvsSplitBy = ",";
@@ -36,7 +35,7 @@ public class CsvMultikeyResource {
 
         try {
 
-            br = new BufferedReader(new FileReader(csvFile));
+            br = new BufferedReader(new FileReader(path));
             propertyNamesLine = br.readLine();
             if (propertyNamesLine != null) {
                 propertyTypesLine = br.readLine();

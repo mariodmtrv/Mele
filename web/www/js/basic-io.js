@@ -1,6 +1,9 @@
 /**
  * Created by mariodimitrov on 12/26/14.
  */
+
+
+
 function submitInputQuery() {
 
     var jsonQuery = processUserInput();
@@ -11,10 +14,8 @@ function submitInputQuery() {
         data: jsonQuery,
         contentType: "application/json; charset=utf-8",
         dataType: "json"
-    }).done(function (data) {
+    }).complete(function (data) {
         displayResult(data);
-    }).error(function (data) {
-        console.log("Failed" + JSON.stringify(data));
     });
 }
 

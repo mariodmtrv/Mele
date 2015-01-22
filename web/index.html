@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <title>Mele - collect and analyze your data</title>
     <link rel="stylesheet" type="text/css"
-          href="www/css/bootstrap.min.css">
+          href="www/css/extended.min.css">
+
     <link rel="stylesheet" type="text/css" href="www/css/index.css">
     <link href="www/css/file-tree.min.css" rel="stylesheet">
     <script type="text/javascript" src="www/lib/jquery-1.11.1.js"></script>
-    <script src="www/js/bootstrap.min.js"></script>
+    <script src="www/js/extended.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <script src="www/js/file-tree.min.js"></script>
     <script src="www/js/basic-io.js"></script>
+    <script src="www/js/autocomplete.js"></script>
 </head>
 <body>
 <header>
@@ -94,7 +96,8 @@ File system manegement
     Data visualisation and input
     -->
     <section id="mainWindow">
-
+        <div id="fileInputDialog">
+        </div>
         <article id="results">
             <textarea readonly id="resultArea" type="text" class="expressionContent" placeholder="Results"
                       class="span6" rows="15">
