@@ -7,7 +7,7 @@ import java.text.ParseException;
  * Created by mariodimitrov on 12/18/14.
  */
 public class AggregateFunctions<T> {
-    public T min(String varName, String ownerId) {
+    public T min(Integer varId) {
 
         return null;
     }

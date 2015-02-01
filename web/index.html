@@ -14,6 +14,42 @@
     <script src="www/js/file-tree.min.js"></script>
     <script src="www/js/basic-io.js"></script>
     <script src="www/js/autocomplete.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            createHelpButtons();
+            $("#expressionInput").text("");
+            var data = [{
+                id: 'dir-1',
+                typeName: 'Root',
+                type: 'dir',
+                children: [
+                    {
+                        id: 'dir-2',
+                        typeName: 'Sub_dir',
+                        type: 'dir',
+                        children: [{
+                            id: 'file-1',
+                            typeName: 'file-tree-master.zip',
+                            type: 'zip',
+                            url: '1.zip'
+                        }]
+                    }, {
+                        id: 'file-2',
+                        typeName: 'File tree',
+                        type: 'zip',
+                        url: '2.zip'
+                    }
+                ]
+            }];
+
+            $('#demo').fileTree({
+                data: data,
+                sortable: false,
+                selectable: false
+            });
+
+        });
+    </script>
 </head>
 <body>
 <header>
@@ -96,21 +132,21 @@ File system manegement
     Data visualisation and input
     -->
     <section id="mainWindow">
-        <div id="fileInputDialog">
-        </div>
+
         <article id="results">
             <textarea readonly id="resultArea" type="text" class="expressionContent" placeholder="Results"
-                      class="span6" rows="15">
-
-            </textarea>
+                      class="span6" rows="15"></textarea>
 
         </article>
         <footer id="input">
             <div>
                 <textarea id="expressionInput" class="expressionContent" type="text"
                           placeholder="Input an expression and press enter"
-                          class="span6" width="250" rows="3">
-</textarea>
+                          class="span6" width="250" rows="3" onkeydown="callAutocompleteOption()">
+
+                </textarea>
+
+
                 <ul style="list-style: none">
                     <li>
                         <div class="btn-group dropup">
@@ -131,47 +167,22 @@ File system manegement
                             Execute
                         </button>
                     </li>
-
                 </ul>
+            </div>
+            <div id="fileInputDialog" style="background-color: red;padding-bottom: 5pt;float: left">
+                <form onsubmit="submitFile()">
+                    <input type="file">
+
+                    <div>
+                        <label for="fileName">Set filename</label>
+                        <input id="fileName" type="text">
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
             </div>
         </footer>
     </section>
 </section>
-<script type="text/javascript">
-    $(document).ready(function () {
-        createHelpButtons();
 
-        var data = [{
-            id: 'dir-1',
-            typeName: 'Root',
-            type: 'dir',
-            children: [
-                {
-                    id: 'dir-2',
-                    typeName: 'Sub_dir',
-                    type: 'dir',
-                    children: [{
-                        id: 'file-1',
-                        typeName: 'file-tree-master.zip',
-                        type: 'zip',
-                        url: '1.zip'
-                    }]
-                }, {
-                    id: 'file-2',
-                    typeName: 'File tree',
-                    type: 'zip',
-                    url: '2.zip'
-                }
-            ]
-        }];
-
-        $('#demo').fileTree({
-            data: data,
-            sortable: false,
-            selectable: false
-        });
-
-    });
-</script>
 </body>
 </html>

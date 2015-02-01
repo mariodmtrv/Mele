@@ -1,48 +1,21 @@
-/**
- * Created by mariodimitrov on 1/21/15.
- */
-$(document).ready(function () {
-
-    $("#expressionInput").keypress(callAutocompleteOption());
-    console.log("added expression input handler");
-});
 function uploadFileDialog() {
+
+
+    $('#fileInputDialog').css('visibility', 'visible');
     console.log("UploadFileDialogCalled");
-    /*   $("#dialog").dialog({
-
-     autoOpen: true,
-     buttons: {
-
-     Yes: function() {
-
-     alert("Yes!");
-     $(this).dialog("close");
-     },
-     No: function() {
-
-     alert("No!");
-     $(this).dialog("close");
-
-     },
-     Maybe: function() {
-
-     alert("Maybe!");
-     $(this).dialog("close");
-     }
-
-     },
-     width: "400px"
-
-     });*/
-
 }
+
 function callAutocompleteOption() {
-    var textInput = $("#textInput").text();
+    var textInput = document.getElementById("expressionInput").value;
     console.log(textInput);
-    if (textInput.substr(textInput.length - 4) == "load") {
+    if (textInput.substr(textInput.length - 6) == "upload") {
         uploadFileDialog();
     }
     /*else if(){
 
      }*/
+}
+function submitFile() {
+    $('#fileInputDialog').css('visibility', 'hidden');
+    //TODO submit file ajax
 }
