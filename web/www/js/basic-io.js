@@ -36,14 +36,16 @@ function displayResult(response) {
 var functionAppendix = {
     "LoadFile": "load(/path/to/file.csv)",
     "Min": "min(object.property)",
-    "Mode": "mode(object.property)"
+    "Mode": "mode(object.property)",
+    "Normalize": "normalize(object.property)",
+    "Upload": "upload(path/to/file.csv)"
 }
 function createHelpButtons() {
 
     Object.keys(functionAppendix).forEach(function (key, index) {
-        var functionButton = "<li><button name= \"" + key +
-            "\" onclick=funcButtonAppend(\"" + key + "\") >" + key +
-            "</button> </li>";
+        var functionButton = "<li><span name= \"" + key +
+            "\" onclick=funcButtonAppend(\"" + key + "\") class=\"availableFunctionButton\">" + key +
+            "</span> </li>";
         $("#functionsMenu").append(functionButton);
     }, functionAppendix);
 }

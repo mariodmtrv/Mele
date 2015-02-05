@@ -1,5 +1,8 @@
 package org.mele.api;
 
+import com.box.sdk.BoxAPIConnection;
+import com.box.sdk.BoxFolder;
+import com.box.sdk.BoxItem;
 import org.mele.api.querying.TextQueryResult;
 import org.mele.api.querying.UserQuery;
 
@@ -51,6 +54,17 @@ public class RequestController {
         // writeToFile(uploadedInputStream, uploadedFileLocation);
 
         String output = "File uploaded to : " + uploadedFileLocation;
+        String API_KEY = "v8w1s1l9zspdls9906pjxj3hxowe9b4v";
+        BoxAPIConnection api = new BoxAPIConnection(API_KEY);
+        BoxFolder rootFolder = BoxFolder.getRootFolder(api);
+        FileInputStream stream = null;
+        try {
+            stream = new FileInputStream("My File.txt");
+            rootFolder.uploadFile(stream, "My File.txt");
+            stream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return Response.status(200).entity(output).build();
 

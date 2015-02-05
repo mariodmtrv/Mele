@@ -21,6 +21,7 @@
 
 .expressionContent {
     font-size: medium;
+    min-width: 400px;
 }
 
 #results {
@@ -46,6 +47,10 @@
 #expressionInput {
     float: left;
     width: 85%;
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+    margin-right: 10px;
+    min-height: 250px;
 }
 
 #functionsButton {
@@ -54,7 +59,18 @@
     width: 7%;
 }
 
+.availableFunctionButton {
+    min-width: 90px;
+    min-height: 60px;
+}
+
 #fileInputDialog {
     visibility: hidden;
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+    margin-top: 5px;
+    padding: 1.5em;
+
+    float: left;
 }
 

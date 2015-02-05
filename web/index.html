@@ -94,14 +94,9 @@
                     <p>
 
                     <div>
-                        <a href="http://fmi.uni-sofia.bg" title=""><img
-                                src="static/resources/SU-logo.jpg" width="40px" height="40px"/>
-                        </a>
-                    </div>
-                    <div>
                         <span>The code is available on Github. Check it out here</span> <a
-                            href="https://github.com/mariodmtrv/SimplexSolver"> <img
-                            src="static/resources/GitHub-Mark.png" width="40px"
+                        href="https://github.com/mariodmtrv/Mele"> <img
+                        src="www/resources/github.png" width="40px"
                             title="Кодът в GitHub" height="40px"/>
                     </a>
                     </div>
@@ -140,9 +135,9 @@ File system manegement
         </article>
         <footer id="input">
             <div>
-                <textarea id="expressionInput" class="expressionContent" type="text"
+                <textarea id="expressionInput" class="expressionContent"
                           placeholder="Input an expression and press enter"
-                          class="span6" width="250" rows="3" onkeydown="callAutocompleteOption()">
+                          onkeydown="callAutocompleteOption(event)">
 
                 </textarea>
 
@@ -169,7 +164,7 @@ File system manegement
                     </li>
                 </ul>
             </div>
-            <div id="fileInputDialog" style="background-color: red;padding-bottom: 5pt;float: left">
+            <div id="fileInputDialog" class="span4">
                 <form onsubmit="submitFile()">
                     <input type="file">
 
