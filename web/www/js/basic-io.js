@@ -10,7 +10,7 @@ function submitInputQuery() {
     console.log("Query" + jsonQuery);
     $.ajax({
         type: "POST",
-        url: "/api/query/text",
+        url: "api/query/text",
         data: jsonQuery,
         contentType: "application/json; charset=utf-8",
         dataType: "json"
@@ -31,7 +31,15 @@ function processUserInput() {
 }
 
 function displayResult(response) {
-    console.log(JSON.stringify(response));
+    var json = eval("(" + response.responseText + ")");
+    var resultArea = document.getElementById("resultArea");
+    resultArea.value += ">>>> " + json["query"] + Array(10).join(" ") + " at " + json["producedTime"].substr(11, 5) + "\n";
+    var x = json["queryResult"];
+    for (var line in x) {
+        console.log("line");
+        resultArea.value += "<< " + x[line] + "\n";
+    }
+    resultArea.value += Array(3).join("<<<") + "\n";
 }
 var functionAppendix = {
     "LoadFile": "load(/path/to/file.csv)",
@@ -39,7 +47,7 @@ var functionAppendix = {
     "Mode": "mode(object.property)",
     "Normalize": "normalize(object.property)",
     "Upload": "upload(path/to/file.csv)"
-}
+};
 function createHelpButtons() {
 
     Object.keys(functionAppendix).forEach(function (key, index) {

@@ -33,7 +33,6 @@ public class VariableOperations {
             e.printStackTrace();
         }
 
-
     }
 
 }

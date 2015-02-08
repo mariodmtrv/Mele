@@ -2,7 +2,10 @@ package org.mele.api;
 
 import com.box.sdk.BoxAPIConnection;
 import com.box.sdk.BoxFolder;
-import com.box.sdk.BoxItem;
+import com.sun.jersey.multipart.FormDataParam;
+import org.junit.Test;
+import org.mele.api.querying.ResponseStatus;
+import org.mele.api.querying.ResponseStatusCode;
 import org.mele.api.querying.TextQueryResult;
 import org.mele.api.querying.UserQuery;
 
@@ -10,37 +13,47 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import com.sun.jersey.core.header.FormDataContentDisposition;
-import com.sun.jersey.multipart.FormDataParam;
 
 /**
  * Created by mariodimitrov on 12/17/14.
  */
-@Path("query")
+@Path("/query")
 public class RequestController {
     @POST
-    @Path("text")
+    @Path("/text")
     @Consumes("application/json")
-    @Produces("text/plain")
-    public String processQuery(UserQuery query) {
+    @Produces("application/json")
+    public TextQueryResult processQuery(UserQuery query) {
         System.out.println(query.getQueryText());
-        return query.getQueryText().toUpperCase();
+        ResponseStatus status = new ResponseStatus(ResponseStatusCode.SUCCESS);
+
+        List<String> queryResult = new ArrayList<>();
+        queryResult.add("hello");
+        Date date = new Date();
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String producedTime = dateFormat.format(date);
+        TextQueryResult result = new TextQueryResult(queryResult,
+                producedTime, status, query.getQueryText());
+        return result;
     }
-  /* public TextQueryResult processTextQuery(UserQuery query) {
-        return null;
-    }*/
+
 
     /*TODO Add file input handling*/
 
     @GET
-    @Path("test")
+    @Path("/test")
     @Produces("text/plain")
     public String testApi() {
         return "Hello, Mele";
     }
 
-
+/*
     @POST
     @Path("/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
@@ -69,5 +82,5 @@ public class RequestController {
         return Response.status(200).entity(output).build();
 
     }
-
+*/
 }

@@ -1,6 +1,5 @@
 package org.mele.api.component;
 
-import org.mele.api.component.MeleApplication;
 import org.restlet.Context;
 import org.restlet.ext.jaxrs.JaxRsApplication;
 
